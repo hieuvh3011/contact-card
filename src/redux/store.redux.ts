@@ -11,13 +11,13 @@ import {
   REHYDRATE,
   persistReducer,
 } from 'redux-persist';
-import {reactotronStorage, reduxStorage} from './persist.redux';
+import {reduxStorage} from './persist.redux';
 import autoMergeLevel2 from 'redux-persist/es/stateReconciler/autoMergeLevel2';
 const middleware: Middleware[] = [logger];
 
 export const persistConfig = {
   key: 'root',
-  storage: __DEV__ ? reactotronStorage : reduxStorage,
+  storage: reduxStorage,
   stateReconciler: autoMergeLevel2,
   debug: __DEV__,
 };
