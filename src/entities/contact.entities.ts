@@ -1,11 +1,9 @@
-import {Realm} from '@realm/react';
-
-export class Contact extends Realm.Object<Contact> {
-  _id!: Realm.BSON.ObjectId;
-  name!: string;
+export interface Contact {
+  id: string;
+  name: string;
   title?: string;
   company?: string;
   email?: string;
-  phoneNumber!: string;
+  phoneNumber: string;
   linkedIn?: string;
 }
