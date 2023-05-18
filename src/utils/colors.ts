@@ -4,5 +4,7 @@ const AppColors = {
   activeTab: '#FF6347',
   inactiveTab: '#C6C6C6',
   background: '#FAFAFA',
+  cardBackground: '#FFF',
+  shadow: '#000',
 };
 export default AppColors;

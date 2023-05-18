@@ -6,6 +6,7 @@
     "MMKV",
     "persistor",
     "Reactotron",
-    "reduxjs"
+    "reduxjs",
+    "uuidv"
   ]
 }
