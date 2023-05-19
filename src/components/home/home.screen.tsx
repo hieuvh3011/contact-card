@@ -4,24 +4,40 @@ import React from 'react';
 import {useAppSelector} from '@app/redux/hook';
 import CardComponent from '@app/components/common/card.component';
 import {Contact} from '@app/entities/contact.entities';
-import {getStatusBarHeight} from 'react-native-iphone-x-helper';
+import FloatingButton from '../common/floating_button.component';
+import Header from '@app/components/common/header.components';
+import {useNavigation} from '@react-navigation/native';
+import {RootStackParamList} from '@app/route/type.navigator';
+import {NativeStackNavigationProp} from '@react-navigation/native-stack';
+
+type Props = NativeStackNavigationProp<RootStackParamList, 'Home'>;
 
 export default function HomeScreen() {
-  const contactSelector = useAppSelector(state => state.contact);
+  const contactSelector = useAppSelector(state => state.contactList);
+  const navigation = useNavigation<Props>();
 
   const _renderItem = (item: Contact) => {
-    return <CardComponent contact={item} />;
+    return (
+      <CardComponent
+        contact={item}
+        onPress={() => {
+          navigation.navigate('CardDetail', {contact: item});
+        }}
+      />
+    );
   };
 
   return (
     <View style={styles.container}>
+      <Header titleText="Contact Card Application" />
       <FlatList
+        showsVerticalScrollIndicator={false}
         style={styles.list}
-        contentContainerStyle={styles.listContainer}
         data={contactSelector.listContact}
         renderItem={({item}) => _renderItem(item)}
         keyExtractor={(item, index) => index.toString()}
       />
+      <FloatingButton onPress={() => {}} icon={<></>} />
     </View>
   );
 }
@@ -31,11 +47,9 @@ const styles = ScaledSheet.create({
     flex: 1,
     alignItems: 'center',
     justifyContent: 'center',
-    paddingTop: getStatusBarHeight(),
   },
   list: {
     flex: 1,
     width: '100%',
   },
-  listContainer: {},
 });

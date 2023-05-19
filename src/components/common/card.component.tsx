@@ -1,4 +1,4 @@
-import {View, Text} from 'react-native';
+import {GestureResponderEvent, Pressable, Text} from 'react-native';
 import React from 'react';
 import {ScaledSheet} from 'react-native-size-matters';
 import {Contact} from '@app/entities/contact.entities';
@@ -6,15 +6,16 @@ import AppColors from '@app/utils/colors';
 
 interface Props {
   contact: Contact;
+  onPress: (event: GestureResponderEvent) => void;
 }
 
 const CardComponent: React.FC<Props> = (props: Props) => {
-  const {id, name, phoneNumber} = props.contact;
+  const {name, phoneNumber} = props.contact;
   return (
-    <View style={styles.container} key={id}>
+    <Pressable style={styles.container} onPress={props.onPress}>
       <Text>{name}</Text>
       <Text>{phoneNumber}</Text>
-    </View>
+    </Pressable>
   );
 };
 
