@@ -12,9 +12,21 @@ const AppStack: React.FC = () => {
     <Stack.Navigator
       screenOptions={{headerShown: false}}
       initialRouteName={'Splash'}>
-      <Stack.Screen name={'Splash'} component={SplashScreen} />
-      <Stack.Screen name={'Home'} component={HomeScreen} />
-      <Stack.Screen name={'CardDetail'} component={CardDetailScreen} />
+      <Stack.Screen
+        name={'Splash'}
+        component={SplashScreen}
+        // options={{headerShown: false}}
+      />
+      <Stack.Screen
+        name={'Home'}
+        component={HomeScreen}
+        // options={{headerBackVisible: false}}
+      />
+      <Stack.Screen
+        name={'CardDetail'}
+        component={CardDetailScreen}
+        // options={{title: 'Card Detail'}}
+      />
     </Stack.Navigator>
   );
 };

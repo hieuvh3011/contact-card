@@ -1,6 +1,6 @@
 import {View, Text, StyleSheet} from 'react-native';
 import React, {useEffect} from 'react';
-import {useNavigation} from '@react-navigation/native';
+import {StackActions, useNavigation} from '@react-navigation/native';
 import {NativeStackNavigationProp} from '@react-navigation/native-stack';
 import {RootStackParamList} from '@app/route/type.navigator';
 
@@ -9,7 +9,7 @@ export default function SplashScreen() {
   const navigation = useNavigation<Props>();
   useEffect(() => {
     setTimeout(() => {
-      navigation.navigate('Home');
+      navigation.dispatch(StackActions.replace('Home'));
     }, 2000);
   }, [navigation]);
 

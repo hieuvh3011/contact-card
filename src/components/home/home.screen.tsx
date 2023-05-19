@@ -5,10 +5,10 @@ import {useAppSelector} from '@app/redux/hook';
 import CardComponent from '@app/components/common/card.component';
 import {Contact} from '@app/entities/contact.entities';
 import FloatingButton from '../common/floating_button.component';
-import Header from '@app/components/common/header.components';
 import {useNavigation} from '@react-navigation/native';
 import {RootStackParamList} from '@app/route/type.navigator';
 import {NativeStackNavigationProp} from '@react-navigation/native-stack';
+import Header from '../common/header.components';
 
 type Props = NativeStackNavigationProp<RootStackParamList, 'Home'>;
 

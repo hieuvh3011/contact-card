@@ -25,13 +25,12 @@ export const contactSlice = createSlice({
       const index = state.listContact.findIndex(
         item => item.id === action.payload.id,
       );
-      const newList = state.listContact.splice(index, 1);
-      state.listContact = newList;
+      state.listContact.splice(index, 1);
     },
   },
 });
 
-export const {addItem} = contactSlice.actions;
+export const {addItem, deleteItem} = contactSlice.actions;
 export const selectContactList = (state: HomeState) => state.listContact;
 
 export default contactSlice.reducer;
