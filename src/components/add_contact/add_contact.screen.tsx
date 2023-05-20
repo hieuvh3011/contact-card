@@ -1,4 +1,4 @@
-import {ScrollView, View} from 'react-native';
+import {KeyboardAvoidingView, ScrollView, View} from 'react-native';
 import React, {useState} from 'react';
 import {ScaledSheet} from 'react-native-size-matters';
 import AppColors from '@app/utils/colors';
@@ -148,7 +148,7 @@ function AddContactScreen() {
   return (
     <View style={styles.container}>
       <Header titleText="Add Contact" hasButtonBack={true} />
-      <View style={styles.inputArea}>
+      <KeyboardAvoidingView style={styles.inputArea} behavior="height">
         <ScrollView>
           <AppTextInput
             label="Phone Number"
@@ -162,7 +162,7 @@ function AddContactScreen() {
           {_renderAddWorkInformation()}
           <AppButton onPress={_onPressAddContact} text="Add New Contact" />
         </ScrollView>
-      </View>
+      </KeyboardAvoidingView>
     </View>
   );
 }

@@ -10,5 +10,6 @@ const AppColors = {
   danger: '#ff0033',
   error: '#ff0033',
   borderInput: '#060606',
+  modalBackground: '#rgba(0, 0, 0, 0.5)',
 };
 export default AppColors;

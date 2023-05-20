@@ -39,10 +39,9 @@ const AppTextInput: React.FC<Props> = ({
 
 const styles = ScaledSheet.create({
   container: {
-    width: '95%',
+    width: '93%',
     alignSelf: 'center',
-    paddingVertical: '4@vs',
-    paddingHorizontal: '5@ms',
+    marginVertical: '5@vs',
   },
   errorText: {
     fontSize: '12@ms',
@@ -52,10 +51,16 @@ const styles = ScaledSheet.create({
     borderWidth: '0.5@ms',
     borderRadius: '4@ms',
     borderColor: AppColors.borderInput,
+    minHeight: '40@vs',
+    paddingVertical: '4@vs',
+    paddingHorizontal: '5@ms',
   },
   inputError: {
     borderWidth: '1@ms',
     borderRadius: '4@ms',
+    minHeight: '40@vs',
+    paddingVertical: '4@vs',
+    paddingHorizontal: '5@ms',
     borderColor: AppColors.error,
   },
 });
