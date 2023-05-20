@@ -10,10 +10,10 @@ interface Props {
 }
 
 const CardComponent: React.FC<Props> = (props: Props) => {
-  const {name, phoneNumber} = props.contact;
+  const {firstName, middleName, lastName, phoneNumber} = props.contact;
   return (
     <Pressable style={styles.container} onPress={props.onPress}>
-      <Text>{name}</Text>
+      <Text>{`${firstName} ${middleName} ${lastName}`}</Text>
       <Text>{phoneNumber}</Text>
     </Pressable>
   );

@@ -9,5 +9,6 @@ const AppColors = {
   buttonWithImageBackground: '#FFF',
   danger: '#ff0033',
   error: '#ff0033',
+  borderInput: '#060606',
 };
 export default AppColors;

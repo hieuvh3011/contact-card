@@ -1,17 +1,24 @@
-import {Text, GestureResponderEvent, Pressable} from 'react-native';
+import {GestureResponderEvent, Pressable} from 'react-native';
 import React from 'react';
-import {ScaledSheet} from 'react-native-size-matters';
+import {ScaledSheet, moderateScale} from 'react-native-size-matters';
 import AppColors from '@app/utils/colors';
+import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
 
 interface Props {
   onPress: (event: GestureResponderEvent) => void;
-  icon: JSX.Element;
+  icon?: JSX.Element;
 }
 
-const FloatingButton: React.FC<Props> = () => {
+const FloatingButton: React.FC<Props> = ({onPress, icon}: Props) => {
   return (
-    <Pressable style={styles.container}>
-      <Text style={styles.text}>+</Text>
+    <Pressable style={styles.container} onPress={onPress}>
+      {icon || (
+        <Icon
+          name="plus"
+          size={moderateScale(35)}
+          color={AppColors.buttonText}
+        />
+      )}
     </Pressable>
   );
 };

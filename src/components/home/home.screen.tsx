@@ -16,12 +16,16 @@ export default function HomeScreen() {
   const contactSelector = useAppSelector(state => state.contactList);
   const navigation = useNavigation<Props>();
 
+  const _goToAddContact = () => {
+    navigation.navigate('AddContact');
+  };
+
   const _renderItem = (item: Contact) => {
     return (
       <CardComponent
         contact={item}
         onPress={() => {
-          navigation.navigate('CardDetail', {contact: item});
+          navigation.navigate('ContactDetail', {contact: item});
         }}
       />
     );
@@ -37,7 +41,7 @@ export default function HomeScreen() {
         renderItem={({item}) => _renderItem(item)}
         keyExtractor={(item, index) => index.toString()}
       />
-      <FloatingButton onPress={() => {}} icon={<></>} />
+      <FloatingButton onPress={_goToAddContact} />
     </View>
   );
 }

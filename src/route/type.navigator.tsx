@@ -5,9 +5,10 @@ import {Contact} from '@app/entities/contact.entities';
 export type RootStackParamList = {
   Home: undefined;
   Splash: undefined;
-  CardDetail: {
+  ContactDetail: {
     contact: Contact;
   };
+  AddContact: undefined;
 };
 
 export type MessageNavigationProps<T extends keyof RootStackParamList> = {

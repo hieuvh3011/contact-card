@@ -10,11 +10,12 @@ import ButtonWithImage from '@app/components/common/button_with_image.component'
 import {useDispatch} from 'react-redux';
 import {deleteItem} from '../home/home.slice';
 
-type Props = NativeStackScreenProps<RootStackParamList, 'CardDetail'>;
+type Props = NativeStackScreenProps<RootStackParamList, 'ContactDetail'>;
 
-function CardDetailScreen({route, navigation}: Props) {
+function ContactDetailScreen({route, navigation}: Props) {
   const {contact} = route.params;
-  const {name, phoneNumber, email, linkedIn} = contact;
+  const {firstName, middleName, lastName, phoneNumber, email, linkedIn} =
+    contact;
   const dispatch = useDispatch();
 
   const sendEmail = () => {
@@ -58,19 +59,22 @@ function CardDetailScreen({route, navigation}: Props) {
   };
 
   const _renderEmailAndLinkedIn = () => {
-    if (email === null && linkedIn === null) {
+    console.log('====================================');
+    console.log(`email = ${email}, linkedIn = ${linkedIn}`);
+    console.log('====================================');
+    if (email === '' && linkedIn === '') {
       return <View />;
     }
     return (
       <View style={styles.emailAndLinkedIn}>
-        {email !== null && (
+        {email !== '' && (
           <ButtonWithImage
             onPress={sendEmail}
             text={email || ''}
             sourceImage={ImageDirectory.emailIcon}
           />
         )}
-        {linkedIn !== null && (
+        {linkedIn !== '' && (
           <ButtonWithImage
             onPress={openLinkedIn}
             text={linkedIn || ''}
@@ -104,7 +108,10 @@ function CardDetailScreen({route, navigation}: Props) {
       <Header titleText="Personal Information" hasButtonBack={true} />
       {_renderImage()}
       <Text style={styles.phoneNumberText}>{phoneNumber}</Text>
-      <Text style={styles.nameText}>{name}</Text>
+      <Text
+        style={
+          styles.nameText
+        }>{`${firstName} ${middleName} ${lastName}`}</Text>
       {_renderEmailAndLinkedIn()}
       {_renderExportAndDeleteButton()}
     </View>
@@ -146,4 +153,4 @@ const styles = ScaledSheet.create({
   },
 });
 
-export default CardDetailScreen;
+export default ContactDetailScreen;
