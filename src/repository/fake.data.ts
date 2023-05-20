@@ -3,7 +3,9 @@ import {Contact} from '@app/entities/contact.entities';
 export const fakeData: Array<Contact> = [
   {
     id: '1',
-    name: 'Vu Huy Hieu',
+    firstName: 'Vu Huy Hieu',
+    middleName: '',
+    lastName: '',
     title: 'Project Manager',
     company: 'Sotatek',
     email: 'hieu.vh301195@gmail.com',
@@ -12,7 +14,9 @@ export const fakeData: Array<Contact> = [
   },
   {
     id: '2',
-    name: 'Vu Van Su',
+    firstName: 'Vu Van Su',
+    middleName: '',
+    lastName: '',
     title: 'Mobile Dev',
     company: 'Sotatek',
     email: 'su.vu@gmail.com',
@@ -21,7 +25,9 @@ export const fakeData: Array<Contact> = [
   },
   {
     id: '3',
-    name: 'Bui Chien Thang',
+    firstName: 'Bui Chien Thang',
+    middleName: '',
+    lastName: '',
     title: 'Mobile Dev',
     company: 'Sotatek',
     email: 'thang.bui@gmail.com',
@@ -30,7 +36,9 @@ export const fakeData: Array<Contact> = [
   },
   {
     id: '4',
-    name: 'Le Van Son',
+    firstName: 'Le Van Son',
+    middleName: '',
+    lastName: '',
     title: 'Mobile Dev',
     company: 'Sotatek',
     email: 'son.le@gmail.com',
@@ -39,7 +47,9 @@ export const fakeData: Array<Contact> = [
   },
   {
     id: '5',
-    name: 'Dao Thi Hue',
+    firstName: 'Dao Thi Hue',
+    middleName: '',
+    lastName: '',
     title: 'tester',
     company: 'Sotatek',
     email: 'hue.dao@gmail.com',

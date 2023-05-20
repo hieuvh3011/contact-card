@@ -2,8 +2,6 @@
 import {createSlice, PayloadAction} from '@reduxjs/toolkit';
 import {Contact} from '@app/entities/contact.entities';
 import {fakeData} from '@app/repository/fake.data';
-import {uuid} from 'uuidv4';
-
 interface HomeState {
   listContact: Array<Contact>;
 }
@@ -18,20 +16,21 @@ export const contactSlice = createSlice({
   reducers: {
     addItem: (state, action: PayloadAction<Contact>) => {
       const newContact = action.payload;
-      newContact.id = uuid();
+      const uniqueId =
+        Date.now().toString(36) + Math.random().toString(36).substring(2);
+      newContact.id = uniqueId;
       state.listContact.push(newContact);
     },
     deleteItem: (state, action: PayloadAction<Contact>) => {
       const index = state.listContact.findIndex(
         item => item.id === action.payload.id,
       );
-      const newList = state.listContact.splice(index, 1);
-      state.listContact = newList;
+      state.listContact.splice(index, 1);
     },
   },
 });
 
-export const {addItem} = contactSlice.actions;
+export const {addItem, deleteItem} = contactSlice.actions;
 export const selectContactList = (state: HomeState) => state.listContact;
 
 export default contactSlice.reducer;

@@ -1,16 +1,15 @@
 import {View, Text, StyleSheet} from 'react-native';
 import React, {useEffect} from 'react';
-import {useNavigation} from '@react-navigation/native';
+import {StackActions, useNavigation} from '@react-navigation/native';
 import {NativeStackNavigationProp} from '@react-navigation/native-stack';
 import {RootStackParamList} from '@app/route/type.navigator';
 
 type Props = NativeStackNavigationProp<RootStackParamList, 'Splash'>;
-
-const SplashScreen: React.FC = () => {
+export default function SplashScreen() {
   const navigation = useNavigation<Props>();
   useEffect(() => {
     setTimeout(() => {
-      navigation.navigate('Login');
+      navigation.dispatch(StackActions.replace('Home'));
     }, 2000);
   }, [navigation]);
 
@@ -19,7 +18,7 @@ const SplashScreen: React.FC = () => {
       <Text>Splash Screen</Text>
     </View>
   );
-};
+}
 
 const styles = StyleSheet.create({
   container: {
@@ -28,4 +27,3 @@ const styles = StyleSheet.create({
     alignItems: 'center',
   },
 });
-export default SplashScreen;
