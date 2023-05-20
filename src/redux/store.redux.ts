@@ -1,4 +1,10 @@
-import {Middleware, configureStore} from '@reduxjs/toolkit';
+import {
+  AnyAction,
+  Middleware,
+  configureStore,
+  ThunkDispatch,
+  Store,
+} from '@reduxjs/toolkit';
 import {appReducers} from './reducer.redux';
 import logger from 'redux-logger';
 import {
@@ -13,7 +19,12 @@ import {
 } from 'redux-persist';
 import {reduxStorage} from './persist.redux';
 import autoMergeLevel2 from 'redux-persist/es/stateReconciler/autoMergeLevel2';
-const middleware: Middleware[] = [logger];
+import thunkMiddleware from 'redux-thunk';
+
+const middleware: Middleware[] = [thunkMiddleware];
+if (__DEV__) {
+  middleware.push(logger);
+}
 
 export const persistConfig = {
   key: 'root',
@@ -38,6 +49,10 @@ export const store = configureStore({
 });
 
 export const persistor = persistStore(store);
+export type AppThunkDispatch = ThunkDispatch<RootState, any, AnyAction>;
 
+export type AppStore = Omit<Store<RootState, AnyAction>, 'dispatch'> & {
+  dispatch: AppThunkDispatch;
+};
 export type RootState = ReturnType<typeof store.getState>;
 export type AppDispatch = ReturnType<typeof store.dispatch>;

@@ -14,8 +14,16 @@ type Props = NativeStackScreenProps<RootStackParamList, 'ContactDetail'>;
 
 function ContactDetailScreen({route, navigation}: Props) {
   const {contact} = route.params;
-  const {firstName, middleName, lastName, phoneNumber, email, linkedIn} =
-    contact;
+  const {
+    firstName,
+    middleName,
+    lastName,
+    phoneNumber,
+    email,
+    linkedIn,
+    title,
+    company,
+  } = contact;
   const dispatch = useDispatch();
 
   const sendEmail = () => {
@@ -85,6 +93,15 @@ function ContactDetailScreen({route, navigation}: Props) {
     );
   };
 
+  const _renderTitleAndCompany = () => {
+    return (
+      <View style={styles.titleAndCompanyArea}>
+        <Text>{`Title: ${title}`}</Text>
+        <Text>{`Company: ${company}`}</Text>
+      </View>
+    );
+  };
+
   const _renderExportAndDeleteButton = () => {
     return (
       <View style={styles.exportAndDelete}>
@@ -112,6 +129,7 @@ function ContactDetailScreen({route, navigation}: Props) {
         style={
           styles.nameText
         }>{`${firstName} ${middleName} ${lastName}`}</Text>
+      {_renderTitleAndCompany()}
       {_renderEmailAndLinkedIn()}
       {_renderExportAndDeleteButton()}
     </View>
@@ -140,6 +158,7 @@ const styles = ScaledSheet.create({
   },
   nameText: {
     fontSize: '14@ms',
+    fontWeight: 'bold',
   },
   emailAndLinkedIn: {
     width: '100%',
@@ -150,6 +169,11 @@ const styles = ScaledSheet.create({
   },
   deleteText: {
     color: AppColors.danger,
+  },
+  titleAndCompanyArea: {
+    width: '100%',
+    paddingHorizontal: '20@ms',
+    marginTop: '20@vs',
   },
 });
 

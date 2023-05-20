@@ -20,7 +20,8 @@ const AppButton: React.FC<Props> = ({text, onPress, style, textStyle}) => {
 
 const styles = ScaledSheet.create({
   container: {
-    width: '93%',
+    minWidth: '93%',
+    paddingHorizontal: '20@ms',
     alignSelf: 'center',
     alignItems: 'center',
     paddingVertical: '11@vs',
