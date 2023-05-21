@@ -1,5 +1,5 @@
 import {combineReducers} from 'redux';
-import contactListReducer from '@app/redux/home/home.slice';
+import contactListReducer from '@app/redux/contact/contact.slice';
 import systemReducer from '@app/redux/system/system.slice';
 
 export type AppState = ReturnType<typeof appReducers>;

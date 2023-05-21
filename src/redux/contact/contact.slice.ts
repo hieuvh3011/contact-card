@@ -5,11 +5,11 @@ import {getGeneratedData} from '@app/repository/home.repository';
 import {setLoading} from '@app/redux/system/system.slice';
 import {Alert} from 'react-native';
 import strings from '@app/i18n';
-interface HomeState {
+interface ContactState {
   listContact: Array<ContactEntities>;
 }
 
-const initialState: HomeState = {
+const initialState: ContactState = {
   listContact: [],
 };
 
@@ -67,6 +67,6 @@ export const contactSlice = createSlice({
 });
 
 export const {addItem, deleteItem, addList, deleteAll} = contactSlice.actions;
-export const selectContactList = (state: HomeState) => state.listContact;
+export const selectContactList = (state: ContactState) => state.listContact;
 
 export default contactSlice.reducer;

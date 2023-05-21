@@ -11,7 +11,7 @@ import {NativeStackNavigationProp} from '@react-navigation/native-stack';
 import Header from '@app/components/common/header.components';
 import AppLoading from '@app/components/common/loading.component';
 import EmptyContactListComponent from './component/empty_contact_list.component';
-import {deleteAll, generateContact} from '@app/redux/home/home.slice';
+import {deleteAll, generateContact} from '@app/redux/contact/contact.slice';
 import {getBottomSpace} from 'react-native-iphone-x-helper';
 import Icons from 'react-native-vector-icons/MaterialCommunityIcons';
 import AppColors from '@app/utils/colors';

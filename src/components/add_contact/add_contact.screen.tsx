@@ -8,7 +8,7 @@ import {isEmail, isLinkedInUrl, isPhoneNumber} from '@app/utils/validation';
 import AppButton from '@app/components/common/button.component';
 import {useDispatch} from 'react-redux';
 import {ContactEntities} from '@app/entities/contact.entities';
-import {addItem} from '@app/redux/home/home.slice';
+import {addItem} from '@app/redux/contact/contact.slice';
 import {navigationRef} from '@app/route/app.navigator';
 import strings from '@app/i18n';
 
