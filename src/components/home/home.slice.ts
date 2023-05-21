@@ -55,6 +55,9 @@ export const contactSlice = createSlice({
       );
       state.listContact.splice(index, 1);
     },
+    deleteAll: state => {
+      state.listContact = [];
+    },
   },
   extraReducers(builder) {
     builder.addCase(generateContact.fulfilled, (state, action) => {
@@ -63,7 +66,7 @@ export const contactSlice = createSlice({
   },
 });
 
-export const {addItem, deleteItem, addList} = contactSlice.actions;
+export const {addItem, deleteItem, addList, deleteAll} = contactSlice.actions;
 export const selectContactList = (state: HomeState) => state.listContact;
 
 export default contactSlice.reducer;

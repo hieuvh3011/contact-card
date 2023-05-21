@@ -1,5 +1,5 @@
-import {View, FlatList} from 'react-native';
-import {ScaledSheet} from 'react-native-size-matters';
+import {View, FlatList, Pressable, Alert} from 'react-native';
+import {ScaledSheet, moderateScale} from 'react-native-size-matters';
 import React from 'react';
 import {useAppDispatch, useAppSelector} from '@app/redux/hook';
 import CardComponent from '@app/components/common/card.component';
@@ -11,7 +11,10 @@ import {NativeStackNavigationProp} from '@react-navigation/native-stack';
 import Header from '../common/header.components';
 import AppLoading from '../common/loading.component';
 import EmptyContactListComponent from './empty_contact_list.component';
-import {generateContact} from './home.slice';
+import {deleteAll, generateContact} from './home.slice';
+import {getBottomSpace} from 'react-native-iphone-x-helper';
+import Icons from 'react-native-vector-icons/MaterialCommunityIcons';
+import AppColors from '@app/utils/colors';
 
 type Props = NativeStackNavigationProp<RootStackParamList, 'Home'>;
 
@@ -30,6 +33,19 @@ const HomeScreen: React.FC<Props> = () => {
     console.log(generateContact);
   };
 
+  const _onPressDeleteAll = () => {
+    Alert.alert(
+      'Warning',
+      'Are you sure that you want to delete all contacts?',
+      [
+        {
+          text: 'Cancel',
+        },
+        {text: 'OK', onPress: () => dispatch(deleteAll())},
+      ],
+    );
+  };
+
   const _renderItem = (item: ContactEntities) => {
     return (
       <CardComponent
@@ -41,20 +57,45 @@ const HomeScreen: React.FC<Props> = () => {
     );
   };
 
+  const _renderHeader = () => {
+    return (
+      <Header
+        titleText="Contact Card Application"
+        rightComponent={
+          <Pressable
+            onPress={_onPressDeleteAll}
+            hitSlop={{
+              bottom: 10,
+              left: 10,
+              right: 10,
+              top: 10,
+            }}>
+            <Icons
+              name="trash-can"
+              size={moderateScale(17)}
+              color={AppColors.background}
+            />
+          </Pressable>
+        }
+      />
+    );
+  };
+
   return (
     <View style={styles.container}>
-      <Header titleText="Contact Card Application" />
-      <View style={styles.list}>
-        <FlatList
-          showsVerticalScrollIndicator={false}
-          style={styles.list}
-          data={contactSelector.listContact}
-          renderItem={({item}) => _renderItem(item)}
-          keyExtractor={(item, index) => index.toString()}
-          ListEmptyComponent={
-            <EmptyContactListComponent onPressButton={_getGeneratedItem} />
-          }
-        />
+      {_renderHeader()}
+      <View style={styles.listContainer}>
+        {contactSelector.listContact.length !== 0 ? (
+          <FlatList
+            showsVerticalScrollIndicator={false}
+            style={styles.list}
+            data={contactSelector.listContact}
+            renderItem={({item}) => _renderItem(item)}
+            keyExtractor={(item, index) => index.toString()}
+          />
+        ) : (
+          <EmptyContactListComponent onPressButton={_getGeneratedItem} />
+        )}
       </View>
       <FloatingButton onPress={_goToAddContact} />
       <AppLoading
@@ -74,12 +115,12 @@ const styles = ScaledSheet.create({
   listContainer: {
     flex: 1,
     width: '100%',
-    alignItems: 'center',
-    justifyContent: 'center',
+    paddingBottom: getBottomSpace(),
   },
   list: {
     flex: 1,
     width: '100%',
+    paddingHorizontal: '14@ms',
   },
 });
 

@@ -45,7 +45,6 @@ function ContactDetailScreen({route, navigation}: Props) {
       [
         {
           text: 'Cancel',
-          onPress: () => console.log('Cancel Pressed'),
           style: 'cancel',
         },
         {text: 'OK', onPress: () => deleteContact()},
