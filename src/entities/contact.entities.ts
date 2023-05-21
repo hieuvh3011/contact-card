@@ -1,4 +1,4 @@
-export interface Contact {
+export interface ContactEntities {
   id?: string;
   firstName: string;
   middleName: string;
@@ -6,6 +6,6 @@ export interface Contact {
   title: string;
   company: string;
   email: string;
-  phoneNumber: string;
+  workPhone: string;
   linkedIn: string;
 }

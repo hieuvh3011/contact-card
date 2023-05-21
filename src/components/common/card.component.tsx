@@ -1,20 +1,20 @@
 import {GestureResponderEvent, Pressable, Text} from 'react-native';
 import React from 'react';
 import {ScaledSheet} from 'react-native-size-matters';
-import {Contact} from '@app/entities/contact.entities';
+import {ContactEntities} from '@app/entities/contact.entities';
 import AppColors from '@app/utils/colors';
 
 interface Props {
-  contact: Contact;
+  contact: ContactEntities;
   onPress: (event: GestureResponderEvent) => void;
 }
 
 const CardComponent: React.FC<Props> = (props: Props) => {
-  const {firstName, middleName, lastName, phoneNumber} = props.contact;
+  const {firstName, middleName, lastName, workPhone} = props.contact;
   return (
     <Pressable style={styles.container} onPress={props.onPress}>
       <Text>{`${firstName} ${middleName} ${lastName}`}</Text>
-      <Text>{phoneNumber}</Text>
+      <Text>{workPhone}</Text>
     </Pressable>
   );
 };
