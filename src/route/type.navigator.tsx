@@ -1,12 +1,12 @@
 import {NativeStackNavigationProp} from '@react-navigation/native-stack';
 import {RouteProp} from '@react-navigation/native';
-import {Contact} from '@app/entities/contact.entities';
+import {ContactEntities} from '@app/entities/contact.entities';
 
 export type RootStackParamList = {
   Home: undefined;
   Splash: undefined;
   ContactDetail: {
-    contact: Contact;
+    contact: ContactEntities;
   };
   AddContact: undefined;
 };

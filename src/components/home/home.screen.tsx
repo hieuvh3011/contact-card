@@ -3,7 +3,7 @@ import {ScaledSheet} from 'react-native-size-matters';
 import React from 'react';
 import {useAppDispatch, useAppSelector} from '@app/redux/hook';
 import CardComponent from '@app/components/common/card.component';
-import {Contact} from '@app/entities/contact.entities';
+import {ContactEntities} from '@app/entities/contact.entities';
 import FloatingButton from '../common/floating_button.component';
 import {useNavigation} from '@react-navigation/native';
 import {RootStackParamList} from '@app/route/type.navigator';
@@ -30,7 +30,7 @@ const HomeScreen: React.FC<Props> = () => {
     console.log(generateContact);
   };
 
-  const _renderItem = (item: Contact) => {
+  const _renderItem = (item: ContactEntities) => {
     return (
       <CardComponent
         contact={item}

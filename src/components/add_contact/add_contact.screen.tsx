@@ -7,7 +7,7 @@ import AppTextInput from '../common/text_input.component';
 import {isEmail, isLinkedInUrl, isPhoneNumber} from './validation';
 import AppButton from '../common/button.component';
 import {useDispatch} from 'react-redux';
-import {Contact} from '@app/entities/contact.entities';
+import {ContactEntities} from '@app/entities/contact.entities';
 import {addItem} from '../home/home.slice';
 import {navigationRef} from '@app/route/app.navigator';
 
@@ -32,8 +32,8 @@ function AddContactScreen() {
     if (phone === '') {
       setPhoneError('Phone Number cannot be empty');
     } else {
-      const contact: Contact = {
-        phoneNumber: phone,
+      const contact: ContactEntities = {
+        workPhone: phone,
         firstName,
         middleName,
         lastName,

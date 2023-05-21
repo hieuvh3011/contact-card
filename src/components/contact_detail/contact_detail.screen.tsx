@@ -9,6 +9,7 @@ import AppColors from '@app/utils/colors';
 import ButtonWithImage from '@app/components/common/button_with_image.component';
 import {useDispatch} from 'react-redux';
 import {deleteItem} from '../home/home.slice';
+import {exportContact} from '@app/repository/export_contact.repository';
 
 type Props = NativeStackScreenProps<RootStackParamList, 'ContactDetail'>;
 
@@ -18,7 +19,7 @@ function ContactDetailScreen({route, navigation}: Props) {
     firstName,
     middleName,
     lastName,
-    phoneNumber,
+    workPhone,
     email,
     linkedIn,
     title,
@@ -33,7 +34,9 @@ function ContactDetailScreen({route, navigation}: Props) {
     Linking.openURL(linkedIn || 'https://www.linkedin.com');
   };
 
-  const exportToVCF = () => {};
+  const exportToVCF = () => {
+    exportContact(contact);
+  };
 
   const onPressDeleteContact = () => {
     Alert.alert(
@@ -67,9 +70,6 @@ function ContactDetailScreen({route, navigation}: Props) {
   };
 
   const _renderEmailAndLinkedIn = () => {
-    console.log('====================================');
-    console.log(`email = ${email}, linkedIn = ${linkedIn}`);
-    console.log('====================================');
     if (email === '' && linkedIn === '') {
       return <View />;
     }
@@ -124,7 +124,7 @@ function ContactDetailScreen({route, navigation}: Props) {
     <View style={styles.container}>
       <Header titleText="Personal Information" hasButtonBack={true} />
       {_renderImage()}
-      <Text style={styles.phoneNumberText}>{phoneNumber}</Text>
+      <Text style={styles.phoneNumberText}>{workPhone}</Text>
       <Text
         style={
           styles.nameText
