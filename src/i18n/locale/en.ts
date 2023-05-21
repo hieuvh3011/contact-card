@@ -17,6 +17,8 @@ export default {
     get_some_fake: 'Get some fake contact',
     or_create_real: 'Or create the real contact with button "+" below',
     fetching_data: 'Fetching data',
+    undefined_error:
+      'An undefined error happened, please try again after 1 minute',
   },
   add_contact: {
     add_contact: 'Add Contact',

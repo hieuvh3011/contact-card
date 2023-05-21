@@ -2,16 +2,16 @@ import {View, FlatList, Pressable, Alert} from 'react-native';
 import {ScaledSheet, moderateScale} from 'react-native-size-matters';
 import React from 'react';
 import {useAppDispatch, useAppSelector} from '@app/redux/hook';
-import CardComponent from '@app/components/common/card.component';
+import CardComponent from '@app/components/home/component/card.component';
 import {ContactEntities} from '@app/entities/contact.entities';
-import FloatingButton from '../common/floating_button.component';
+import FloatingButton from './component/floating_button.component';
 import {useNavigation} from '@react-navigation/native';
 import {RootStackParamList} from '@app/route/type.navigator';
 import {NativeStackNavigationProp} from '@react-navigation/native-stack';
-import Header from '../common/header.components';
-import AppLoading from '../common/loading.component';
-import EmptyContactListComponent from './empty_contact_list.component';
-import {deleteAll, generateContact} from './home.slice';
+import Header from '@app/components/common/header.components';
+import AppLoading from '@app/components/common/loading.component';
+import EmptyContactListComponent from './component/empty_contact_list.component';
+import {deleteAll, generateContact} from '@app/redux/home/home.slice';
 import {getBottomSpace} from 'react-native-iphone-x-helper';
 import Icons from 'react-native-vector-icons/MaterialCommunityIcons';
 import AppColors from '@app/utils/colors';
@@ -19,7 +19,7 @@ import strings from '@app/i18n';
 
 type Props = NativeStackNavigationProp<RootStackParamList, 'Home'>;
 
-const HomeScreen: React.FC<Props> = () => {
+export default function HomeScreen() {
   const contactSelector = useAppSelector(state => state.contactList);
   const systemSelector = useAppSelector(state => state.system);
   const navigation = useNavigation<Props>();
@@ -104,7 +104,7 @@ const HomeScreen: React.FC<Props> = () => {
       />
     </View>
   );
-};
+}
 
 const styles = ScaledSheet.create({
   container: {
@@ -123,5 +123,3 @@ const styles = ScaledSheet.create({
     paddingHorizontal: '14@ms',
   },
 });
-
-export default HomeScreen;

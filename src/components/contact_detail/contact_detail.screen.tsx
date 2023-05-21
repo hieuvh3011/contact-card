@@ -8,8 +8,8 @@ import ImageDirectory from '@app/assets';
 import AppColors from '@app/utils/colors';
 import ButtonWithImage from '@app/components/common/button_with_image.component';
 import {useDispatch} from 'react-redux';
-import {deleteItem} from '../home/home.slice';
-import {exportContact} from '@app/repository/export_contact.repository';
+import {deleteItem} from '@app/redux/home/home.slice';
+import {exportContact} from '@app/repository/contact.repository';
 import strings from '@app/i18n';
 
 type Props = NativeStackScreenProps<RootStackParamList, 'ContactDetail'>;

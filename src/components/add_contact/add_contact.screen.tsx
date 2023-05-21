@@ -2,13 +2,13 @@ import {KeyboardAvoidingView, ScrollView, View} from 'react-native';
 import React, {useState} from 'react';
 import {ScaledSheet} from 'react-native-size-matters';
 import AppColors from '@app/utils/colors';
-import Header from '../common/header.components';
-import AppTextInput from '../common/text_input.component';
-import {isEmail, isLinkedInUrl, isPhoneNumber} from './validation';
-import AppButton from '../common/button.component';
+import Header from '@app/components/common/header.components';
+import AppTextInput from '@app/components/common/text_input.component';
+import {isEmail, isLinkedInUrl, isPhoneNumber} from '@app/utils/validation';
+import AppButton from '@app/components/common/button.component';
 import {useDispatch} from 'react-redux';
 import {ContactEntities} from '@app/entities/contact.entities';
-import {addItem} from '../home/home.slice';
+import {addItem} from '@app/redux/home/home.slice';
 import {navigationRef} from '@app/route/app.navigator';
 import strings from '@app/i18n';
 
