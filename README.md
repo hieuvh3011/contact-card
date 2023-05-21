@@ -11,6 +11,8 @@ If you don't want to build the app, that's fine. Let's check 2 app that I alread
 ## I want to build app to check the source code
 
 In that case, please follow these steps
+
+
 Step 1: clone project from git
 
 ```bash
@@ -56,6 +58,8 @@ $ npm run android:bundle:release
 to build AAB file
 
 Step 5: build .ipa file
+
+
 For this step, please read this article
 
 ## Folder structure
