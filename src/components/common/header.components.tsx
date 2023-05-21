@@ -1,11 +1,14 @@
 import {Pressable, Text, View} from 'react-native';
 import React from 'react';
-import {ScaledSheet, moderateScale} from 'react-native-size-matters';
+import {
+  ScaledSheet,
+  moderateScale,
+  verticalScale,
+} from 'react-native-size-matters';
 import AppColors from '@app/utils/colors';
 import {getStatusBarHeight} from 'react-native-iphone-x-helper';
 import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
 import {navigationRef} from '@app/route/app.navigator';
-
 interface Props {
   titleText: string;
   leftComponent?: JSX.Element;
@@ -25,7 +28,7 @@ const Header: React.FC<Props> = ({
 
   const _renderLeftComponent = () => {
     if (leftComponent) {
-      return leftComponent;
+      return <>{leftComponent}</>;
     }
     if (hasButtonBack) {
       return (
@@ -45,12 +48,14 @@ const Header: React.FC<Props> = ({
         </Pressable>
       );
     }
-    return <View />;
+    if (rightComponent) {
+      return <View style={styles.blankRight} />;
+    }
   };
 
   const _renderRightComponent = () => {
     if (rightComponent) {
-      return rightComponent;
+      return <>{rightComponent}</>;
     }
     if (hasButtonBack) {
       return <View style={styles.blankRight} />;
@@ -70,7 +75,7 @@ const Header: React.FC<Props> = ({
 const styles = ScaledSheet.create({
   container: {
     width: '100%',
-    paddingTop: getStatusBarHeight() + 10,
+    paddingTop: getStatusBarHeight() + verticalScale(20),
     paddingBottom: '10@vs',
     backgroundColor: AppColors.primary,
     flexDirection: 'row',

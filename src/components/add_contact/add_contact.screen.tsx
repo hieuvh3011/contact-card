@@ -2,14 +2,15 @@ import {KeyboardAvoidingView, ScrollView, View} from 'react-native';
 import React, {useState} from 'react';
 import {ScaledSheet} from 'react-native-size-matters';
 import AppColors from '@app/utils/colors';
-import Header from '../common/header.components';
-import AppTextInput from '../common/text_input.component';
-import {isEmail, isLinkedInUrl, isPhoneNumber} from './validation';
-import AppButton from '../common/button.component';
+import Header from '@app/components/common/header.components';
+import AppTextInput from '@app/components/common/text_input.component';
+import {isEmail, isLinkedInUrl, isPhoneNumber} from '@app/utils/validation';
+import AppButton from '@app/components/common/button.component';
 import {useDispatch} from 'react-redux';
 import {ContactEntities} from '@app/entities/contact.entities';
-import {addItem} from '../home/home.slice';
+import {addItem} from '@app/redux/contact/contact.slice';
 import {navigationRef} from '@app/route/app.navigator';
+import strings from '@app/i18n';
 
 // type Props = NativeStackNavigationProp<RootStackParamList, 'AddContact'>;
 
@@ -30,7 +31,7 @@ function AddContactScreen() {
 
   const _onPressAddContact = () => {
     if (phone === '') {
-      setPhoneError('Phone Number cannot be empty');
+      setPhoneError(strings.add_contact.error.phone_number_cannot_empty);
     } else {
       const contact: ContactEntities = {
         workPhone: phone,
@@ -50,7 +51,7 @@ function AddContactScreen() {
   const _onChangePhone = (phoneNumber: string) => {
     setPhone(phoneNumber);
     if (!isPhoneNumber(phoneNumber) && phoneNumber !== '') {
-      setPhoneError('Phone Number is incorrect format');
+      setPhoneError(strings.add_contact.error.phone_number_format_is_incorrect);
     } else {
       setPhoneError('');
     }
@@ -59,7 +60,7 @@ function AddContactScreen() {
   const _onChangeEmail = (emailInput: string) => {
     setEmail(emailInput);
     if (!isEmail(emailInput) && emailInput !== '') {
-      setEmailError('Email is incorrect format');
+      setEmailError(strings.add_contact.error.email_format_is_incorrect);
     } else {
       setEmailError('');
     }
@@ -68,7 +69,7 @@ function AddContactScreen() {
   const _onChangeLinkedIn = (linkedInInput: string) => {
     setLinkedIn(linkedInInput);
     if (!isLinkedInUrl(linkedInInput) && linkedInInput !== '') {
-      setLinkedInError('This is not a LinkedIn url');
+      setLinkedInError(strings.add_contact.error.linked_in_url_incorrect);
     } else {
       setLinkedInError('');
     }
@@ -78,28 +79,28 @@ function AddContactScreen() {
     return (
       <>
         <AppTextInput
-          label="First Name"
+          label={strings.add_contact.first_name}
           onChangeText={value => {
             setFirstName(value);
           }}
           value={firstName}
-          placeholder="Vu"
+          placeholder="John"
         />
         <AppTextInput
-          label="Middle Name"
+          label={strings.add_contact.middle_name}
           onChangeText={value => {
             setMiddleName(value);
           }}
           value={middleName}
-          placeholder="Huy"
+          placeholder="Something"
         />
         <AppTextInput
-          label="Last Name"
+          label={strings.add_contact.last_name}
           onChangeText={value => {
             setLastName(value);
           }}
           value={lastName}
-          placeholder="Hieu"
+          placeholder="Doe"
         />
       </>
     );
@@ -109,32 +110,32 @@ function AddContactScreen() {
     return (
       <>
         <AppTextInput
-          label="Title"
+          label={strings.add_contact.title}
           onChangeText={value => {
             setTitle(value);
           }}
           value={title}
-          placeholder="Mobile Developer"
+          placeholder="Example Title"
         />
         <AppTextInput
-          label="Company"
+          label={strings.add_contact.company}
           onChangeText={value => {
             setCompany(value);
           }}
           value={company}
-          placeholder="Affinidi"
+          placeholder="Example Company"
         />
         <AppTextInput
-          label="Email"
+          label={strings.add_contact.email}
           onChangeText={_onChangeEmail}
           value={email}
-          placeholder="hieu.vh301195@gmail.com"
+          placeholder="john.doe@mailservice.com"
           autoCapitalize={'none'}
           keyboardType="email-address"
           errorText={emailError}
         />
         <AppTextInput
-          label="LinkedIn"
+          label={strings.add_contact.linked_in}
           onChangeText={_onChangeLinkedIn}
           value={linkedIn}
           autoCapitalize={'none'}
@@ -147,11 +148,14 @@ function AddContactScreen() {
 
   return (
     <View style={styles.container}>
-      <Header titleText="Add Contact" hasButtonBack={true} />
+      <Header
+        titleText={strings.add_contact.add_contact}
+        hasButtonBack={true}
+      />
       <KeyboardAvoidingView style={styles.inputArea} behavior="height">
         <ScrollView>
           <AppTextInput
-            label="Phone Number"
+            label={strings.add_contact.phone_number}
             onChangeText={_onChangePhone}
             value={phone}
             keyboardType="phone-pad"
@@ -160,7 +164,10 @@ function AddContactScreen() {
           />
           {_renderAddName()}
           {_renderAddWorkInformation()}
-          <AppButton onPress={_onPressAddContact} text="Add New Contact" />
+          <AppButton
+            onPress={_onPressAddContact}
+            text={strings.add_contact.add_new_contact}
+          />
         </ScrollView>
       </KeyboardAvoidingView>
     </View>

@@ -4,11 +4,12 @@ import {ContactEntities} from '@app/entities/contact.entities';
 import {getGeneratedData} from '@app/repository/home.repository';
 import {setLoading} from '@app/redux/system/system.slice';
 import {Alert} from 'react-native';
-interface HomeState {
+import strings from '@app/i18n';
+interface ContactState {
   listContact: Array<ContactEntities>;
 }
 
-const initialState: HomeState = {
+const initialState: ContactState = {
   listContact: [],
 };
 
@@ -16,15 +17,14 @@ export const generateContact = createAsyncThunk(
   'generate_contact',
   async (_, thunkAPI) => {
     thunkAPI.dispatch(
-      setLoading({isLoading: true, textLoading: 'Fetching data'}),
+      setLoading({isLoading: true, textLoading: strings.home.fetching_data}),
     );
     const data: Array<ContactEntities> = await getGeneratedData().catch(
       error => {
         thunkAPI.dispatch(setLoading({isLoading: false, textLoading: ''}));
         Alert.alert(
-          'Error',
-          error.message ||
-            'An undefined error happened, please try again after 1 minute',
+          strings.common.error,
+          error.message || strings.home.undefined_error,
         );
         return [];
       },
@@ -55,6 +55,9 @@ export const contactSlice = createSlice({
       );
       state.listContact.splice(index, 1);
     },
+    deleteAll: state => {
+      state.listContact = [];
+    },
   },
   extraReducers(builder) {
     builder.addCase(generateContact.fulfilled, (state, action) => {
@@ -63,7 +66,7 @@ export const contactSlice = createSlice({
   },
 });
 
-export const {addItem, deleteItem, addList} = contactSlice.actions;
-export const selectContactList = (state: HomeState) => state.listContact;
+export const {addItem, deleteItem, addList, deleteAll} = contactSlice.actions;
+export const selectContactList = (state: ContactState) => state.listContact;
 
 export default contactSlice.reducer;

@@ -8,8 +8,9 @@ import ImageDirectory from '@app/assets';
 import AppColors from '@app/utils/colors';
 import ButtonWithImage from '@app/components/common/button_with_image.component';
 import {useDispatch} from 'react-redux';
-import {deleteItem} from '../home/home.slice';
-import {exportContact} from '@app/repository/export_contact.repository';
+import {deleteItem} from '@app/redux/contact/contact.slice';
+import {exportContact} from '@app/repository/contact.repository';
+import strings from '@app/i18n';
 
 type Props = NativeStackScreenProps<RootStackParamList, 'ContactDetail'>;
 
@@ -40,15 +41,14 @@ function ContactDetailScreen({route, navigation}: Props) {
 
   const onPressDeleteContact = () => {
     Alert.alert(
-      'Warning',
-      'Are you sure that you want to delete this contact?',
+      strings.common.warning,
+      strings.contact_detail.are_you_want_to_delete,
       [
         {
-          text: 'Cancel',
-          onPress: () => console.log('Cancel Pressed'),
+          text: strings.common.cancel,
           style: 'cancel',
         },
-        {text: 'OK', onPress: () => deleteContact()},
+        {text: strings.common.ok, onPress: () => deleteContact()},
       ],
     );
   };
@@ -96,8 +96,8 @@ function ContactDetailScreen({route, navigation}: Props) {
   const _renderTitleAndCompany = () => {
     return (
       <View style={styles.titleAndCompanyArea}>
-        <Text>{`Title: ${title}`}</Text>
-        <Text>{`Company: ${company}`}</Text>
+        <Text>{`${strings.contact_detail.title}: ${title}`}</Text>
+        <Text>{`${strings.contact_detail.company}: ${company}`}</Text>
       </View>
     );
   };
@@ -107,12 +107,12 @@ function ContactDetailScreen({route, navigation}: Props) {
       <View style={styles.exportAndDelete}>
         <ButtonWithImage
           onPress={exportToVCF}
-          text={'Export contact to VCF file'}
+          text={strings.contact_detail.export_to_vcf}
           sourceImage={ImageDirectory.exportIcon}
         />
         <ButtonWithImage
           onPress={onPressDeleteContact}
-          text={'Delete this contact'}
+          text={strings.contact_detail.delete_this_contact}
           sourceImage={ImageDirectory.deleteIcon}
           textStyle={styles.deleteText}
         />

@@ -6,6 +6,7 @@ import vCard from 'react-native-vcards';
 export const exportContact = async (contact: ContactEntities) => {
   const card = parseContactToVCardObject(contact);
   const filePath = saveVCardToFile(contact, card);
+
   FileViewer.open(filePath).catch(error => {
     console.error('error open file vfc = ', error);
   });

@@ -13,15 +13,17 @@ const CardComponent: React.FC<Props> = (props: Props) => {
   const {firstName, middleName, lastName, workPhone} = props.contact;
   return (
     <Pressable style={styles.container} onPress={props.onPress}>
-      <Text>{`${firstName} ${middleName} ${lastName}`}</Text>
-      <Text>{workPhone}</Text>
+      <Text style={styles.name}>
+        {`${firstName} ${middleName} ${lastName}`}
+      </Text>
+      <Text style={styles.phoneNumber}>{workPhone}</Text>
     </Pressable>
   );
 };
 
 const styles = ScaledSheet.create({
   container: {
-    width: '95%',
+    width: '100%',
     paddingVertical: '5@vs',
     paddingHorizontal: '8@ms',
     borderRadius: '5@ms',
@@ -36,6 +38,15 @@ const styles = ScaledSheet.create({
     shadowOpacity: 0.29,
     shadowRadius: 4.65,
     elevation: 7,
+  },
+  name: {
+    fontSize: '15@ms',
+    fontWeight: 'bold',
+  },
+  phoneNumber: {
+    fontSize: '13@ms',
+    fontStyle: 'italic',
+    marginTop: '4@vs',
   },
 });
 
