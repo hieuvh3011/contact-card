@@ -9,7 +9,6 @@ import AppColors from '@app/utils/colors';
 import {getStatusBarHeight} from 'react-native-iphone-x-helper';
 import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
 import {navigationRef} from '@app/route/app.navigator';
-
 interface Props {
   titleText: string;
   leftComponent?: JSX.Element;

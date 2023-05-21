@@ -4,6 +4,7 @@ import {StackActions, useNavigation} from '@react-navigation/native';
 import {NativeStackNavigationProp} from '@react-navigation/native-stack';
 import {RootStackParamList} from '@app/route/type.navigator';
 import {ScaledSheet} from 'react-native-size-matters';
+import strings from '@app/i18n';
 
 type Props = NativeStackNavigationProp<RootStackParamList, 'Splash'>;
 export default function SplashScreen() {
@@ -16,7 +17,7 @@ export default function SplashScreen() {
 
   return (
     <View style={styles.container}>
-      <Text style={styles.text}>Very simple splash screen</Text>
+      <Text style={styles.text}>{strings.splash.simple_splash}</Text>
     </View>
   );
 }

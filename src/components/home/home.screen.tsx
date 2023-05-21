@@ -15,6 +15,7 @@ import {deleteAll, generateContact} from './home.slice';
 import {getBottomSpace} from 'react-native-iphone-x-helper';
 import Icons from 'react-native-vector-icons/MaterialCommunityIcons';
 import AppColors from '@app/utils/colors';
+import strings from '@app/i18n';
 
 type Props = NativeStackNavigationProp<RootStackParamList, 'Home'>;
 
@@ -23,7 +24,6 @@ const HomeScreen: React.FC<Props> = () => {
   const systemSelector = useAppSelector(state => state.system);
   const navigation = useNavigation<Props>();
   const dispatch = useAppDispatch();
-
   const _goToAddContact = () => {
     navigation.navigate('AddContact');
   };
@@ -35,13 +35,13 @@ const HomeScreen: React.FC<Props> = () => {
 
   const _onPressDeleteAll = () => {
     Alert.alert(
-      'Warning',
-      'Are you sure that you want to delete all contacts?',
+      strings.common.warning,
+      strings.home.are_you_want_to_delete_all,
       [
         {
-          text: 'Cancel',
+          text: strings.common.cancel,
         },
-        {text: 'OK', onPress: () => dispatch(deleteAll())},
+        {text: strings.common.ok, onPress: () => dispatch(deleteAll())},
       ],
     );
   };
@@ -60,7 +60,7 @@ const HomeScreen: React.FC<Props> = () => {
   const _renderHeader = () => {
     return (
       <Header
-        titleText="Contact Card Application"
+        titleText={strings.home.contact_card_application}
         rightComponent={
           <Pressable
             onPress={_onPressDeleteAll}
