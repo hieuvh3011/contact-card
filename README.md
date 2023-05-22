@@ -8,6 +8,9 @@ Hi guys, as you already known, this application is made for the technical assess
 
 If you don't want to build the app, that's fine. Let's check 2 app that I already deployed here. I cannot push the app into store because I do not have enough of time, so I will deploy both of them into Diawi
 
+- Android app: https://i.diawi.com/AH8TaM
+- iOS app: https://i.diawi.com/PQdjVd (only Safari will allow you to download and install file from Diawi)
+
 ## I want to build app to check the source code
 
 In that case, please follow these steps
@@ -60,7 +63,7 @@ to build AAB file
 Step 5: build .ipa file
 
 
-For this step, please read this article
+For this step, please read [this article](https://bianca-dragomir.medium.com/archiving-ios-react-native-app-in-an-nrwl-monorepo-debugging-guide-8f207c69d777)
 
 ## Folder structure
 
