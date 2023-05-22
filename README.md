@@ -1,18 +1,19 @@
 # hieuvh3011/contact-card-application
 
 ## Introduction
+Hi guys, as you already known, this application is made for the technical assessment of Affinidi. So I will try to make this document as short as possible. The main purpose of this document is to show you how to build and test the application in both Android and iOS
 
-Hi guys, as you already known, this application is made for the technical assessment of Affinidi. So I will try to make this document as short as possible. The only purpose of this document is to show you how to build and test the application in both Android and iOS
-
-## I don't want to build
-
-If you don't want to build the app, that's fine. Let's check 2 app that I already deployed here. I cannot push the app into store because I do not have enough of time, so I will deploy both of them into Diawi
+## Use-case 1: I don't want to build, just install applications
+If you don't want to build the app, that's fine. Let's check 2 app that I already deployed here. I cannot push the app into App Store and Google Store because I do not have enough of time. The review app process will take a lot of time. So I will deploy both of them into Diawi
 
 - Android app: https://i.diawi.com/AH8TaM
 - iOS app: https://i.diawi.com/PQdjVd (only Safari will allow you to download and install file from Diawi)
 
-## I want to build app to check the source code
+## Use-case 2: I don't want to install 2 applications above, it could be viruses
+Well, that make sense. In that case, please check 2 video that I record about the app after install and use:
+- Link Google Drive: https://drive.google.com/drive/folders/1d6d-hKidT4QN329tzBQMpMvh-W_7HKzs?usp=sharing
 
+## Use-case 3: I want to build app myself and check the source code
 In that case, please follow these steps
 
 
@@ -66,7 +67,6 @@ Step 5: build .ipa file
 For this step, please read [this article](https://bianca-dragomir.medium.com/archiving-ios-react-native-app-in-an-nrwl-monorepo-debugging-guide-8f207c69d777)
 
 ## Folder structure
-
 This part will describe the folder structure
 
 - `src`: This folder is the main container of all the code inside of the application
