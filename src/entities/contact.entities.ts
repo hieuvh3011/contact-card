@@ -1,8 +1,11 @@
-export interface Contact {
-  name: string;
+export interface ContactEntities {
+  id?: string;
+  firstName: string;
+  middleName: string;
+  lastName: string;
   title: string;
   company: string;
   email: string;
-  phoneNumber: string;
+  workPhone: string;
   linkedIn: string;
 }
